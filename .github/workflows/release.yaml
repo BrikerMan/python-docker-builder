@@ -26,6 +26,12 @@ jobs:
       - name: Setup env variables
         run: sh build-helper.sh ${GITHUB_REF/refs\/tags\//}
 
+      - name: Check env variables
+        run: |
+          echo "DOCKER_TAG=${{ env.DOCKER_TAG }}"
+          echo "BASE_IMAGE=${{ env.BASE_IMAGE }}"
+          echo "PY_VERSION=${{ env.PY_VERSION }}"
+
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
@@ -38,9 +44,9 @@ jobs:
         with:
           push: true
           tags: "brikerman/python:${{ env.DOCKER_TAG }}"
-          build-args: |
+          build-args:
             PY_VERSION=${{ env.PY_VERSION }}
-            BASE_IMAGE= ${{ env.BASE_IMAGE }}
+            BASE_IMAGE=${{ env.BASE_IMAGE }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
       - name: Print image digest
