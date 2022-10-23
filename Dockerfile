@@ -1,4 +1,4 @@
-ARG PYTHON_VERSION="3.8.6"
+ARG PY_VERSION="3.8.6"
 ARG BASE_IMAGE="ubuntu:20.04"
 ARG DEBIAN_FRONTEND="noninteractive"
 
@@ -51,8 +51,8 @@ RUN apt-get -qq -y update && \
 RUN curl https://pyenv.run | bash
 
 RUN pyenv update \
-    && pyenv install $PYTHON_VERSION \
-    && pyenv virtualenv $PYTHON_VERSION general \
+    && pyenv install $PY_VERSION \
+    && pyenv virtualenv $PY_VERSION general \
     && pyenv global general
 
 CMD [ "/bin/bash" ]
