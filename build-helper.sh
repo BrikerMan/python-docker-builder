@@ -3,7 +3,7 @@ IN=$1
 
 PY_VERSION=`echo $IN | cut -d \@ -f 1`
 BASE_IMAGE_SAFE_TAG=`echo $IN | cut -d \@ -f 2`
-BASE_IMAGE=$(echo ${BASE_IMAGE_SAFE_TAG/\-\-/\:})
+BASE_IMAGE=$(echo "$BASE_IMAGE_SAFE_TAG" | sed "s/\-\-/\:/g")
 
 echo "Building Python $PY_VERSION on $BASE_IMAGE"
 if [[ $BASE_IMAGE = "ubuntu:20.04" ]]
@@ -14,6 +14,7 @@ else
 fi
 
 echo "Build python image with tag: ${DOCKER_TAG}"
+echo "BASE IMAGE SAFE TAG: ${BASE_IMAGE_SAFE_TAG}"
 echo "Base image: ${BASE_IMAGE}"
 echo "Python version: ${PY_VERSION}"
 
