@@ -35,16 +35,12 @@ jobs:
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
-        env:
-          DOCKER_TAG: ${{ env.DOCKER_TAG }}
-          BASE_IMAGE: ${{ env.BASE_IMAGE }}
-          PY_VERSION: ${{ env.PY_VERSION }}
         with:
           push: true
-          tags: "brikerman/python:${DOCKER_TAG}"
+          tags: "brikerman/python:${{ env.DOCKER_TAG }}"
           build-args: |
-            PY_VERSION=${PY_VERSION}
-            BASE_IMAGE=${BASE_IMAGE}
+            PY_VERSION=${{ env.PY_VERSION }}
+            BASE_IMAGE= ${{ env.BASE_IMAGE }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
       - name: Print image digest
