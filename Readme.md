@@ -4,12 +4,17 @@ This is a personal tool to build python image with various base image to suit pe
 
 ## How to trigger buid
 
-Replace char rules:
+Github tag replace rule:
 
-- `\` -> `---`
 - `:` -> `--`
 
-1. Create a new release with tag in format `<python-version>@<base-image-tag>`.
+Docker tag replace rule:
+
+- `/` -> `---`
+- `:` -> `--`
+- `@` -> `..`
+
+1. Create a new release with tag in format `<python-version>@<base-image-tag>`, for example `3.8.6@nvidia/cuda--11.3.0-runtime-ubuntu20.04`.
 2. This will trigger a github action, and build a image with tag `3.8.6..nvidia---cuda--11.3.0-runtime-ubuntu20.04`
 
 ## Pre-build images
