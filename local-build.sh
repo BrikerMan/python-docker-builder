@@ -15,6 +15,7 @@ echo "BASE IMAGE SAFE TAG: ${BASE_IMAGE_SAFE_TAG}"
 echo "Base image: ${BASE_IMAGE}"
 echo "Python version: ${PY_VERSION}"
 
-echo "DOCKER_TAG=${DOCKER_TAG}" >> $GITHUB_ENV
-echo "PY_VERSION=${PY_VERSION}" >> $GITHUB_ENV
-echo "BASE_IMAGE=${BASE_IMAGE}" >> $GITHUB_ENV
+# Use this when builing locally
+echo "Command: docker build . --build-arg PY_VERSION=${PY_VERSION} --build-arg BASE_IMAGE=${BASE_IMAGE} -t "brikerman/python:${DOCKER_TAG}""
+
+docker build . --build-arg PY_VERSION=${PY_VERSION} --build-arg BASE_IMAGE=${BASE_IMAGE} -t "brikerman/python:${DOCKER_TAG}"
