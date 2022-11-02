@@ -1,6 +1,6 @@
 # Docker Python Builder
 
-This is a personal tool to build python image with various base image to suit personal use cases.
+This is a tool to build python image with various base image.
 
 ## Available version
 
