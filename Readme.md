@@ -24,18 +24,20 @@ docker pull brikerman/python:{Docker Tag}
 
 ## How to trigger buid
 
-Github tag replace rule:
+### Github Action
 
-- `:` -> `--`
+Manually trigger github action with python version and base image.
 
-Docker tag replace rule:
+### Local Build
+
+```shell
+sh build-helper.sh 3.8.10 nvidia/cuda:11.3.0-runtime-ubuntu20.04
+```
+
+## Docker tag replace rule
 
 - `/` -> `---`
 - `:` -> `--`
-- `@` -> `..`
-
-1. Create a new release with tag in format `<python-version>@<base-image-tag>`, for example `3.8.6@nvidia/cuda--11.3.0-runtime-ubuntu20.04`.
-2. This will trigger a github action, and build a image with tag `3.8.6..nvidia---cuda--11.3.0-runtime-ubuntu20.04`
 
 ## Links
 
