@@ -6,13 +6,13 @@ This is a personal tool to build python image with various base image to suit pe
 
 Here is the list of versions which is already available on [Docker hub](https://hub.docker.com/repository/docker/brikerman/python).
 
-| DockerTag                                         | Python version | Base Image                             |
-| ------------------------------------------------- | -------------- | -------------------------------------- |
-| 3.11.0..ubuntu--20.04                             | 3.11.0         | ubuntu:20.04                           |
-| 3.10.8..ubuntu--20.04                             | 3.10.8         | ubuntu:20.04                           |
-| 3.9.15..ubuntu--20.04                             | 3.9.15         | ubuntu:20.04                           |
-| 3.8.15..ubuntu--20.04                             | 3.8.15         | ubuntu:20.04                           |
-| 3.8.15..nvidia---cuda--11.3.0-runtime-ubuntu20.04 | 3.8.15         | nvidia/cuda:11.3.0-runtime-ubuntu20.04 |
+| Python | Base Image                             | DockerTag                                         |
+| ------ | -------------------------------------- | ------------------------------------------------- |
+| 3.11.0 | ubuntu:20.04                           | 3.11.0..ubuntu--20.04                             |
+| 3.10.8 | ubuntu:20.04                           | 3.10.8..ubuntu--20.04                             |
+| 3.9.15 | ubuntu:20.04                           | 3.9.15..ubuntu--20.04                             |
+| 3.8.15 | ubuntu:20.04                           | 3.8.15..ubuntu--20.04                             |
+| 3.8.15 | nvidia/cuda:11.3.0-runtime-ubuntu20.04 | 3.8.15..nvidia---cuda--11.3.0-runtime-ubuntu20.04 |
 
 You can get this image by
 
