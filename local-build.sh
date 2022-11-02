@@ -1,9 +1,9 @@
 #!/bin/bash
-IN=$1
 
-PY_VERSION=`echo $IN | cut -d \@ -f 1`
-BASE_IMAGE_SAFE_TAG=`echo $IN | cut -d \@ -f 2`
-BASE_IMAGE=$(echo "$BASE_IMAGE_SAFE_TAG" | sed "s/\-\-/\:/g")
+PY_VERSION=$1
+BASE_IMAGE=$2
+
+BASE_IMAGE_SAFE_TAG=$(echo "$BASE_IMAGE" | sed "s/\:\-\-//g")
 
 echo "Building Python $PY_VERSION on $BASE_IMAGE"
 

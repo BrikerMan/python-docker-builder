@@ -1,19 +1,27 @@
 name: Release new version
 
 on:
-  release:
-    types:
-      - released
+  workflow_dispatch:
+    inputs:
+      pythonVersion:
+        description: "Python Version"
+        required: true
+        type: string
+      baseImage:
+        description: "Base Image"
+        type: string
+        required: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3
+      
       - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
+        uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
+        uses: docker/setup-buildx-action@v2
 
       - name: Cache Docker layers
         uses: actions/cache@v2
@@ -24,7 +32,10 @@ jobs:
             ${{ runner.os }}-buildx-
 
       - name: Setup env variables
-        run: sh build-helper.sh ${GITHUB_REF/refs\/tags\//}
+        run: sh build-helper.sh ${pythonVersion} ${baseImage}
+        env:
+          pythonVersion: ${{ inputs.pythonVersion }}
+          baseImage: ${{ inputs.baseImage }}
 
       - name: Check env variables
         run: |
@@ -33,19 +44,18 @@ jobs:
           echo "PY_VERSION=${{ env.PY_VERSION }}"
 
       - name: Login to DockerHub
-        uses: docker/login-action@v1
+        uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Build and push
         id: docker_build
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v3
         with:
           push: true
           tags: "brikerman/python:${{ env.DOCKER_TAG }}"
-          build-args:
-            PY_VERSION=${{ env.PY_VERSION }}
+          build-args: PY_VERSION=${{ env.PY_VERSION }}
             BASE_IMAGE=${{ env.BASE_IMAGE }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
