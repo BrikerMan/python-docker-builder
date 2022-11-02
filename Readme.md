@@ -6,7 +6,7 @@ This is a tool to build python image with various base image.
 
 Here is the list of versions which is already available on [Docker hub](https://hub.docker.com/repository/docker/brikerman/python).
 
-| Python | Base Image                             | DockerTag                                         |
+| Python | Base Image                             | Docker Tag                                         |
 | ------ | -------------------------------------- | ------------------------------------------------- |
 | 3.11.0 | ubuntu:20.04                           | 3.11.0..ubuntu--20.04                             |
 | 3.10.8 | ubuntu:20.04                           | 3.10.8..ubuntu--20.04                             |
@@ -19,7 +19,7 @@ Here is the list of versions which is already available on [Docker hub](https://
 You can get this image by
 
 ```bash
-docker pull brikerman/python:{DockerTag}
+docker pull brikerman/python:{Docker Tag}
 ```
 
 ## How to trigger buid
@@ -36,10 +36,6 @@ Docker tag replace rule:
 
 1. Create a new release with tag in format `<python-version>@<base-image-tag>`, for example `3.8.6@nvidia/cuda--11.3.0-runtime-ubuntu20.04`.
 2. This will trigger a github action, and build a image with tag `3.8.6..nvidia---cuda--11.3.0-runtime-ubuntu20.04`
-
-## Pre-build images
-
-You can get pre-build images here: [Docker hub](https://hub.docker.com/repository/docker/brikerman/python)
 
 ## Links
 
