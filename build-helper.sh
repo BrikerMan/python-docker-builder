@@ -4,8 +4,8 @@ BASE_IMAGE=$2
 
 echo "Building Python $PY_VERSION on $BASE_IMAGE"
 
-BASE_IMAGE_SAFE_TAG=${BASE_IMAGE//:/--}
-BASE_IMAGE_SAFE_TAG=${BASE_IMAGE_SAFE_TAG/\//---}
+BASE_IMAGE_SAFE_TAG=$(echo "$BASE_IMAGE" | sed "s/\//\-\-\-/g")
+BASE_IMAGE_SAFE_TAG=$(echo "$BASE_IMAGE_SAFE_TAG" | sed "s/\:/\-\-/g")
 
 DOCKER_TAG="${PY_VERSION}..${BASE_IMAGE_SAFE_TAG}"
 
