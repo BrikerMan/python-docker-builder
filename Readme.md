@@ -17,7 +17,7 @@ Here is the list of versions which is already available on [Docker hub](https://
 You can get this image by
 
 ```bash
-`docker pull brikerman/python:{DockerTag}`
+docker pull brikerman/python:{DockerTag}
 ```
 
 ## How to trigger buid
