@@ -12,6 +12,8 @@ Here is the list of versions which is already available on [Docker hub](https://
 | 3.10.8 | ubuntu:20.04                           | 3.10.8..ubuntu--20.04                             |
 | 3.9.15 | ubuntu:20.04                           | 3.9.15..ubuntu--20.04                             |
 | 3.8.15 | ubuntu:20.04                           | 3.8.15..ubuntu--20.04                             |
+| 3.10.8 | nvidia/cuda:11.3.0-runtime-ubuntu20.04 | 3.10.8..nvidia---cuda--11.3.0-runtime-ubuntu20.04 |
+| 3.9.15 | nvidia/cuda:11.3.0-runtime-ubuntu20.04 | 3.9.15..nvidia---cuda--11.3.0-runtime-ubuntu20.04 |
 | 3.8.15 | nvidia/cuda:11.3.0-runtime-ubuntu20.04 | 3.8.15..nvidia---cuda--11.3.0-runtime-ubuntu20.04 |
 
 You can get this image by
