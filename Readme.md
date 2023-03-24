@@ -8,14 +8,11 @@ Here is the list of versions which is already available on [Docker hub](https://
 
 | Python | Base Image                             | Docker Tag                                         |
 | ------ | -------------------------------------- | ------------------------------------------------- |
-| 3.11.0 | ubuntu:20.04                           | 3.11.0..ubuntu--20.04                             |
-| 3.10.8 | ubuntu:20.04                           | 3.10.8..ubuntu--20.04                             |
-| 3.10.8 | nvidia/cuda:11.3.0-runtime-ubuntu20.04 | 3.10.8..nvidia---cuda--11.3.0-runtime-ubuntu20.04 |
-| 3.9.15 | ubuntu:20.04                           | 3.9.15..ubuntu--20.04                             |
-| 3.9.15 | nvidia/cuda:11.3.0-runtime-ubuntu20.04 | 3.9.15..nvidia---cuda--11.3.0-runtime-ubuntu20.04 |
+| 3.11.2 | ubuntu:20.04                           | 3.11.2..ubuntu--20.04                             |
+| 3.10.10 | ubuntu:20.04                           | 3.10.10..ubuntu--20.04                            |
+| 3.9.16 | ubuntu:20.04                           | 3.9.16..ubuntu--20.04                             |
+| 3.9.16 | nvidia/cuda:11.3.0-runtime-ubuntu20.04 | 3.9.16..nvidia---cuda--11.3.0-runtime-ubuntu20.04 |
 | 3.8.16 | ubuntu:20.04                           | 3.8.16..ubuntu--20.04                             |
-| 3.8.15 | ubuntu:20.04                           | 3.8.15..ubuntu--20.04                             |
-| 3.8.15 | nvidia/cuda:11.3.0-runtime-ubuntu20.04 | 3.8.15..nvidia---cuda--11.3.0-runtime-ubuntu20.04 |
 
 You can get this image by
 
