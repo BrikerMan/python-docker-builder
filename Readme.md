@@ -6,10 +6,12 @@ This is a tool to build python image with various base image.
 
 Here is the list of versions which is already available on [Docker hub](https://hub.docker.com/repository/docker/brikerman/python).
 
-| Python | Base Image                             | Docker Tag                                         |
+| Python | Base Image                             | Docker Tag                                        |
 | ------ | -------------------------------------- | ------------------------------------------------- |
+| 3.12.0 | ubuntu:22.04                           | 3.12.0..ubuntu--22.04                             |
+| 3.11.6 | ubuntu:22.04                           | 3.11.6..ubuntu--22.04                             |
 | 3.11.2 | ubuntu:20.04                           | 3.11.2..ubuntu--20.04                             |
-| 3.10.10 | ubuntu:20.04                           | 3.10.10..ubuntu--20.04                            |
+| 3.10.10 | ubuntu:20.04                          | 3.10.10..ubuntu--20.04                            |
 | 3.9.16 | ubuntu:20.04                           | 3.9.16..ubuntu--20.04                             |
 | 3.9.16 | nvidia/cuda:11.3.0-runtime-ubuntu20.04 | 3.9.16..nvidia---cuda--11.3.0-runtime-ubuntu20.04 |
 | 3.8.16 | ubuntu:20.04                           | 3.8.16..ubuntu--20.04                             |
