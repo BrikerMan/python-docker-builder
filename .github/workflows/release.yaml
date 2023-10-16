@@ -65,7 +65,7 @@ jobs:
           tags: "brikerman/python:${{ env.DOCKER_TAG }}"
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max'
-          context: "{{defaultContext}}:src"
+          context: "${{defaultContext}}:src"
 
       - name: Print image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
