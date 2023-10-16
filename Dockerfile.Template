@@ -1,4 +1,4 @@
-FROM ${BASE_IMAGE}
+FROM BASE_IMAGE
 
 USER root
 WORKDIR /root
@@ -35,10 +35,10 @@ RUN apt-get -qq -y update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY install_python.sh install_python.sh
-RUN bash install_python.sh ${PY_VERSION} 1
+RUN bash install_python.sh PY_VERSION 1
 
 # Clean up
-RUN rm -rf install_python.sh Python-${PY_VERSION}.tgz
+RUN rm -rf install_python.sh Python-PY_VERSION.tgz
 
 # Enable tab completion by uncommenting it from /etc/bash.bashrc
 # The relevant lines are those below the phrase "enable bash completion in interactive shells"

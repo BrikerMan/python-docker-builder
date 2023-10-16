@@ -21,11 +21,10 @@ echo "BASE_IMAGE=${BASE_IMAGE}" >> $GITHUB_ENV
 export DOCKER_TAG=${DOCKER_TAG}
 
 # Read the Dockerfile template
-template=$(<Dockerfile.Template)
+template=$(<Dockerfile.template)
 
 # Replace the placeholders with the desired values
-dockerfile="${template//\$\{BASE_IMAGE\}/$BASE_IMAGE}"
-dockerfile="${dockerfile//\$\{PY_VERSION\}/$PY_VERSION}"
+dockerfile="${template//BASE_IMAGE/$BASE_IMAGE}"
+dockerfile="${dockerfile//PY_VERSION/$PY_VERSION}"
 
-# Write the modified Dockerfile to a file
 echo "$dockerfile" > Dockerfile
