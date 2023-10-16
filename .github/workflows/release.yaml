@@ -45,6 +45,10 @@ jobs:
           echo "BASE_IMAGE=${{ env.BASE_IMAGE }}"
           echo "PY_VERSION=${{ env.PY_VERSION }}"
 
+      - name: Check docker file
+        run: |
+          cat Dockerfile
+
       - name: Login to DockerHub
         uses: docker/login-action@v2
         with:
