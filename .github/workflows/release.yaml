@@ -34,7 +34,7 @@ jobs:
             ${{ runner.os }}-buildx-
 
       - name: Setup env variables
-        run: sh build-helper.sh ${pythonVersion} ${baseImage}
+        run: bash build-helper.sh ${pythonVersion} ${baseImage}
         env:
           pythonVersion: ${{ inputs.pythonVersion }}
           baseImage: ${{ inputs.baseImage }}
