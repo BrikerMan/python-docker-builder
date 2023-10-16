@@ -11,6 +11,14 @@ on:
         description: "Base Image"
         type: string
         required: true
+      short_version_tag:
+        description: "Add short version tag"
+        type: choice
+        required: true
+        default: 'true'
+        options:
+          - 'true'
+          - 'false'
 
 run-name: Build Python ${{ inputs.pythonVersion }} on ${{ inputs.baseImage }}
 
@@ -34,10 +42,11 @@ jobs:
             ${{ runner.os }}-buildx-
 
       - name: Setup env variables
-        run: bash build-helper.sh ${pythonVersion} ${baseImage}
+        run: bash build-helper.sh ${pythonVersion} ${baseImage} ${shortVersionTag}
         env:
           pythonVersion: ${{ inputs.pythonVersion }}
           baseImage: ${{ inputs.baseImage }}
+          shortVersionTag: ${{ inputs.short_version_tag }}
 
       - name: Check env variables
         run: |
@@ -62,7 +71,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: "brikerman/python:${{ env.DOCKER_TAG }}"
+          tags: "${{ env.DOCKER_TAG }}"
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max'
           context: "/home/runner/work/python-docker-builder/python-docker-builder"
