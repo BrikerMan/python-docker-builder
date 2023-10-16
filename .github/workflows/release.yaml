@@ -59,13 +59,13 @@ jobs:
 
       - name: Build and push
         id: docker_build
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v6
         with:
           push: true
-          tags: "brikerman/python:${{ env.DOCKER_TAG }}"
+          image: "brikerman/python"
+          tags: "${{ env.DOCKER_TAG }}"
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max'
-          directory: .
-
+          context: "{{defaultContext}}:src"
       - name: Print image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
