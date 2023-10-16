@@ -57,8 +57,6 @@ jobs:
         with:
           push: true
           tags: "brikerman/python:${{ env.DOCKER_TAG }}"
-          build-args: PY_VERSION=${{ env.PY_VERSION }}
-            BASE_IMAGE=${{ env.BASE_IMAGE }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
       - name: Print image digest

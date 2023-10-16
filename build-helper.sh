@@ -17,3 +17,15 @@ echo "Python version: ${PY_VERSION}"
 echo "DOCKER_TAG=${DOCKER_TAG}" >> $GITHUB_ENV
 echo "PY_VERSION=${PY_VERSION}" >> $GITHUB_ENV
 echo "BASE_IMAGE=${BASE_IMAGE}" >> $GITHUB_ENV
+
+export DOCKER_TAG=${DOCKER_TAG}
+
+# Read the Dockerfile template
+template=$(<Dockerfile.template)
+
+# Replace the placeholders with the desired values
+dockerfile="${template//\$\{BASE_IMAGE\}/$BASE_IMAGE}"
+dockerfile="${dockerfile//\$\{PY_VERSION\}/$PY_VERSION}"
+
+# Write the modified Dockerfile to a file
+echo "$dockerfile" > Dockerfile
