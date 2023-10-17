@@ -67,7 +67,7 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Build and push
-        id: docker_build
+        id: docker_build_1
         uses: docker/build-push-action@v3
         if: ${{ inputs.short_version_tag }}== 'true'
         with:
@@ -78,7 +78,7 @@ jobs:
           context: "/home/runner/work/python-docker-builder/python-docker-builder"
 
       - name: Build and push
-        id: docker_build
+        id: docker_build_2
         uses: docker/build-push-action@v3
         with:
           push: true
