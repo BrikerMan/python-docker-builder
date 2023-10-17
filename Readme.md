@@ -6,6 +6,17 @@ This is a tool to build python image with various base image.
 
 Here is the list of versions which is already available on [Docker hub](https://hub.docker.com/repository/docker/brikerman/python).
 
+
+
+| Python Short Version | Python Version  | Base Image                             | Docker Tag                                        |
+| ------ | -------------------------------------- | ------------------------------------------------- |
+| 3.12 | 3.12.0  | ubuntu:22.04                           | 3.12..ubuntu--22.04                             |
+| 3.11 | 3.11.6  | ubuntu:22.04                           | 3.11..ubuntu--22.04                             |
+| 3.10 | 3.10.13 | ubuntu:22.04                           | 3.10..ubuntu--20.04                             |
+| 3.9  | 3.9.18  | ubuntu:22.04                           | 3.9..ubuntu--20.04                            |
+| 3.8  | 3.8.18  | ubuntu:22.04                           | 3.8..ubuntu--20.04                           |
+
+
 | Python | Base Image                             | Docker Tag                                        |
 | ------ | -------------------------------------- | ------------------------------------------------- |
 | 3.12.0 | ubuntu:22.04                           | 3.12.0..ubuntu--22.04                             |
