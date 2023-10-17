@@ -69,9 +69,20 @@ jobs:
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v3
+        if: ${{ inputs.short_version_tag }}== 'true'
         with:
           push: true
-          tags: "${{ env.DOCKER_TAG }}"
+          tags: "brikerman/python:${{ env.DOCKER_SHORT_TAG }}"
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max'
+          context: "/home/runner/work/python-docker-builder/python-docker-builder"
+
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: "brikerman/python:${{ env.DOCKER_FULL_TAG }}"
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max'
           context: "/home/runner/work/python-docker-builder/python-docker-builder"
