@@ -54,6 +54,7 @@ jobs:
           cat Dockerfile
           pwd
           ls -la
+          mkdir -p ${GITHUB_WORKSPACE}/.buildx
 
       - name: Login to DockerHub
         uses: docker/login-action@v2
@@ -63,21 +64,29 @@ jobs:
 
       - name: Build and push
         id: docker_build_1
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         if: ${{ inputs.short_version_tag }}== 'true'
         with:
           push: true
           tags: "brikerman/python:${{ env.DOCKER_SHORT_TAG }}"
           context: "${GITHUB_WORKSPACE}"
+          cache-from: |
+            type=local,src=${GITHUB_WORKSPACE}/.buildx
+          cache-to: |
+            type=local,dest=${GITHUB_WORKSPACE}/.buildx
           platforms: linux/amd64,linux/arm64/v8
 
       - name: Build and push
         id: docker_build_2
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           push: true
           tags: "brikerman/python:${{ env.DOCKER_FULL_TAG }}"
           context: "${GITHUB_WORKSPACE}"
+          cache-from: |
+            type=local,src=${GITHUB_WORKSPACE}/.buildx
+          cache-to: |
+            type=local,dest=${GITHUB_WORKSPACE}/.buildx
           platforms: linux/amd64,linux/arm64/v8
 
       - name: Print image digest
