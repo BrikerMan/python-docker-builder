@@ -80,13 +80,13 @@ function symlink_python_to_python3 {
     local python_version
     python_version="$(python3 --version)"
     local which_python
-    which_python="$(command -v python3)${python_version:8:}"
+    which_python="$(command -v python3)"
     local which_pip
     which_pip="$(command -v pip3)"
 
     # symlink python to python3
-    printf "\n### ln --symbolic --force %s %s\n" "${which_python}" "${which_python::-1}"
-    ln --symbolic --force "${which_python}" "${which_python::-1}"
+    printf "\n### ln --symbolic --force %s %s\n" "${which_python}" "/usr/bin/python"
+    ln --symbolic --force "${which_python}" "/usr/bin/python"
 
     # symlink pip to pip3 if no pip exists or it is a different version than pip3
     if [[ -n "$(command -v pip)" ]]; then
@@ -94,34 +94,28 @@ function symlink_python_to_python3 {
             return 0
         fi
     fi
-    printf "\n### ln --symbolic --force %s %s\n" "${which_pip}" "${which_pip::-1}"
-    ln --symbolic --force "${which_pip}" "${which_pip::-1}"
+    printf "\n### ln --symbolic --force %s %s\n" "${which_pip}" "/usr/bin/pip"
+    ln --symbolic --force "${which_pip}" "/usr/bin/pip"
     return 0
 }
 
 function main() {
-    # 1: the Python version tag
-    # 2: bool of if should symlink python and pip to python3 versions
-
-    PYTHON_VERSION_TAG=3.10.5
-    LINK_PYTHON_TO_PYTHON3=0 # By default don't link so as to reserve python for Python 2
-    if [[ $# -gt 0 ]]; then
-        PYTHON_VERSION_TAG="${1}"
-
-        if [[ $# -gt 1 ]]; then
-            LINK_PYTHON_TO_PYTHON3="${2}"
-        fi
+    # 1: python version
+    # 2: number of processors for make
+    if [[ $# -lt 1 ]]; then
+        printf "At least one argument required.  Got %s\n" "$#"
+        return 1
     fi
 
-    NPROC="$(set_num_processors)"
-    download_cpython "${PYTHON_VERSION_TAG}"
-    cd Python-"${PYTHON_VERSION_TAG}"
-    build_cpython /usr "${PYTHON_VERSION_TAG}"
+    PYTHON_VERSION=$1
+    NPROC=${2:-$(set_num_processors)}
+
+    cd /root
+    download_cpython "${PYTHON_VERSION}"
+    cd "Python-${PYTHON_VERSION}"
+    build_cpython /usr "${PYTHON_VERSION}"
     update_pip
-
-    if [[ "${LINK_PYTHON_TO_PYTHON3}" -eq 1 ]]; then
-        symlink_python_to_python3
-    fi
+    symlink_python_to_python3
 }
 
 main "$@" || exit 1

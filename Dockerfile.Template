@@ -6,6 +6,8 @@ SHELL [ "/bin/bash", "-c" ]
 
 RUN apt-get -qq -y update && \
     DEBIAN_FRONTEND=noninteractive apt-get -qq -y install \
+        build-essential \
+        libm-dev \
         gcc \
         g++ \
         zlib1g-dev \
