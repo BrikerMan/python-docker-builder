@@ -36,14 +36,6 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Cache Docker layers
-        uses: actions/cache@v2
-        with:
-          path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-buildx-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-buildx-
-
       - name: Setup env variables
         run: bash build-helper.sh ${pythonVersion} ${baseImage} ${shortVersionTag}
         env:
@@ -76,9 +68,7 @@ jobs:
         with:
           push: true
           tags: "brikerman/python:${{ env.DOCKER_SHORT_TAG }}"
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max'
-          context: "/home/runner/work/python-docker-builder/python-docker-builder"
+          context: "${GITHUB_WORKSPACE}"
           platforms: linux/amd64,linux/arm64/v8
 
       - name: Build and push
@@ -87,9 +77,7 @@ jobs:
         with:
           push: true
           tags: "brikerman/python:${{ env.DOCKER_FULL_TAG }}"
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max'
-          context: "/home/runner/work/python-docker-builder/python-docker-builder"
+          context: "${GITHUB_WORKSPACE}"
           platforms: linux/amd64,linux/arm64/v8
 
       - name: Print image digest
