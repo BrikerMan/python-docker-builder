@@ -8,6 +8,8 @@ Here is the list of versions which is already available on [Docker hub](https://
 
 | Python Major Version | Python Version | Base Image   | Docker Tag          | Updated Time |
 | -------------------- | -------------- | ------------ | ------------------- | ------------ |
+| 3.13                 | 3.13.2         | ubuntu:24.04 | 3.13-ubuntu-24.04   | 20250207     |
+| 3.13                 | 3.13.2         | ubuntu:22.04 | 3.13-ubuntu-22.04   | 20250207     |
 | 3.12                 | 3.12.3         | ubuntu:22.04 | 3.12..ubuntu--22.04 | 20240603     |
 | 3.11                 | 3.11.9         | ubuntu:22.04 | 3.11..ubuntu--22.04 | 20240603     |
 | 3.10                 | 3.10.13        | ubuntu:22.04 | 3.10..ubuntu--20.04 | 20231017     |
@@ -48,6 +50,15 @@ sh build-helper.sh 3.8.10 nvidia/cuda:11.3.0-runtime-ubuntu20.04
 ```
 
 ## Docker tag replace rule
+
+### Update on 20250207
+
+Updated to this to avoid `..` causing issues on mac client with proxy.
+
+- `/` -> `-`
+- `:` -> `-`
+
+### Legacy tag
 
 - `/` -> `---`
 - `:` -> `--`

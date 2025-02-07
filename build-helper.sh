@@ -6,7 +6,7 @@ USE_SHORT_PY_VERSION=$3
 echo "Building Python $PY_VERSION on $BASE_IMAGE"
 
 BASE_IMAGE_SAFE_TAG=$(echo "$BASE_IMAGE" | sed "s/\//\-\-\-/g")
-BASE_IMAGE_SAFE_TAG=$(echo "$BASE_IMAGE_SAFE_TAG" | sed "s/\:/\-\-/g")
+BASE_IMAGE_SAFE_TAG=$(echo "$BASE_IMAGE_SAFE_TAG" | sed "s/\:/\-/g")
 
 # 将 .. 改为 -
 DOCKER_TAG="${PY_VERSION}-${BASE_IMAGE_SAFE_TAG}"
